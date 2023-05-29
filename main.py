@@ -1,7 +1,7 @@
-
+from View.main_window import window
 
 def main():
-    pass
+    window()
 
 
 if __name__ == "__main__":
