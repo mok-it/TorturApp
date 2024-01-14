@@ -1,4 +1,4 @@
-from View.main_window import window
+from src.main.view.main_window import window
 
 def main():
     window()

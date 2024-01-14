@@ -1,4 +1,4 @@
-from View.qt_functions import *
+from src.main.view.qt_functions import *
 
 class NewTorturaWindow(QWidget):
     clicked = pyqtSignal()
