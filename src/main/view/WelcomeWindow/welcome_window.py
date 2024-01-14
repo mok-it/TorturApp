@@ -1,5 +1,5 @@
-from View.qt_functions import *
-from View.WelcomeWindow.new_tortura_window import NewTorturaWindow
+from src.main.view.qt_functions import *
+
 
 class WelcomeWindow(QWidget):
     new_tortura_signal = pyqtSignal()

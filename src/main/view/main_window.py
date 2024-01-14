@@ -1,6 +1,6 @@
-from View.qt_functions import *
-from View.WelcomeWindow.welcome_window import WelcomeWindow
-from View.WelcomeWindow.new_tortura_window import NewTorturaWindow
+from src.main.view.qt_functions import *
+from src.main.view.WelcomeWindow.welcome_window import WelcomeWindow
+from src.main.view.WelcomeWindow.new_tortura_window import NewTorturaWindow
 import sys
 from functools import partial
 

@@ -1,4 +1,4 @@
 ./venv
 .idea
-View/WelcomeWindow/__pycache__
-View/__pycache__
+src/main/view/WelcomeWindow/__pycache__
+src/main/view/__pycache__
