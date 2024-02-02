@@ -18,10 +18,10 @@ If somebody read it they should know what hide this.
   - Classes should be written with CamelCase
   - Example: class MainWindow
 - Functions
-  - Functions should be written with camelCase
-  - Example: def countTheExcercises()
+  - Functions should be written with snake_case
+  - Example: def count_the_excercises()
   - Please write the input types and output type
-  - Example: def increaseByOne(num: int) -> int
+  - Example: def increase_by_one(num: int) -> int
 - Variables
   - Variables should be written with snake_case
   - Example: number_of_groups = 10
