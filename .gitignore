@@ -2,3 +2,4 @@
 .idea
 src/main/view/WelcomeWindow/__pycache__
 src/main/view/__pycache__
+src/test/unittests/__pycache__/
