@@ -28,6 +28,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install PyQt5 # it doesn't work, even when it is in the requirements.txt
+         run: pip install PyQt5
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
