@@ -1,11 +1,12 @@
-from src.main.view.qt_functions import *
+from PyQt5.QtWidgets import QWidget, QGridLayout
+
 
 class MainWidget(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         grid = QGridLayout()
         self.setLayout(grid)
 

@@ -16,16 +16,16 @@ class GroupExercise(Exercise):
         super().__init__(solution)
         self.answers = []
 
-    def answerExercise(self, answer: Solution) -> None:
+    def answer_exercise(self, answer: Solution) -> None:
         self.answers.append(answer)
 
-    def getAnswers(self) -> List[Solution]:
+    def get_answers(self) -> List[Solution]:
         return self.answers
 
-    def getNthAnswer(self, n: int) -> Solution:
+    def get_nth_answer(self, n: int) -> Solution:
         return self.answers[n]
 
-    def getLastGoodAnswer(self) -> int:
+    def get_last_good_answer(self) -> int:
         if len(self.answers) == 0 or self.answers[-1] == Solution.WRONG:
             return -1
         index: int = len(self.answers) - 1

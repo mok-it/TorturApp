@@ -10,16 +10,16 @@ class NewTorturaWindow(QWidget):
         grid = QGridLayout()
         self.setLayout(grid)
 
-        camp_label = createLabel("Tábor")
-        age_label = createLabel("Korcsoport")
+        camp_label = create_label("Tábor")
+        age_label = create_label("Korcsoport")
 
         camp_list = ("Sástó 1", "Sástó 2", "Pusztafalu", "Pálköve 1", "Pálköve 2")
-        camp_combobox = createComboBox(camp_list)
+        camp_combobox = create_combo_box(camp_list)
 
         age_list = ("AB", "KLM", "PQRST", "XYZUp")
-        age_combobox = createComboBox(age_list)
+        age_combobox = create_combo_box(age_list)
 
-        ok_button = createPushButton("OK", self.dummy_function)
+        ok_button = create_push_button("OK", self.dummy_function)
 
         grid.addWidget(camp_label, 0, 0)
         grid.addWidget(camp_combobox, 0, 1)

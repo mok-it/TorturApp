@@ -8,7 +8,7 @@ app = QApplication(sys.argv)
 
 class TestQtFunctions(unittest.TestCase):
     def test_createLabel(self):
-        label = qt_functions.createLabel("Test")
+        label = qt_functions.create_label("Test")
         self.assertIsInstance(label, QtWidgets.QLabel)
         self.assertEqual(label.text(), "Test")
 
