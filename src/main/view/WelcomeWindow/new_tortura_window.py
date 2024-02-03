@@ -1,12 +1,15 @@
-from src.main.view.qt_functions import *
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QWidget, QGridLayout
+
+from src.main.view.qt_functions import create_label, create_combo_box, create_push_button
 
 class NewTorturaWindow(QWidget):
     clicked = pyqtSignal()
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         grid = QGridLayout()
         self.setLayout(grid)
 
