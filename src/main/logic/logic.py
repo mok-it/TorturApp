@@ -9,19 +9,16 @@ class Logic:
     blocks: List[Block] = []
     groups: List[Group] = []
 
-    def __init__(self):
-        pass
-
-    def addGroup(self, group: Group) -> None:
+    def add_group(self, group: Group) -> None:
         self.groups.append(group)
 
-    def createBlocks(self, blocks_length: List[int]) -> None:
+    def create_blocks(self, blocks_length: List[int]) -> None:
         for block_length in blocks_length:
             self.blocks.append(Block(block_length, [Exercise(None) for _ in range(0, block_length)]))
 
-    def getNthBlock(self, n: int) -> Block:
+    def get_nth_block(self, n: int) -> Block:
         assert len(self.blocks) > n >= 0
         return self.blocks[n]
 
-    def sumBlocksLength(self):
+    def sum_blocks_length(self):
         return sum([block.size for block in self.blocks])

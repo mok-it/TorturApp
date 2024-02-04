@@ -1,11 +1,11 @@
 class Exercise:
-    solution: str = None
+    solution: str
 
     def __init__(self, solution):
         self.solution = solution
 
-    def getSolution(self) -> str:
+    def get_solution(self) -> str:
         return self.solution
 
-    def getLastGoodAnswer(self):
+    def get_last_good_answer(self):
         pass

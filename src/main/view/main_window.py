@@ -1,4 +1,5 @@
-from src.main.view.qt_functions import *
+from PyQt5.QtWidgets import QMainWindow, QApplication
+
 from src.main.view.WelcomeWindow.welcome_window import WelcomeWindow
 from src.main.view.WelcomeWindow.new_tortura_window import NewTorturaWindow
 import sys
@@ -9,18 +10,18 @@ class MainWindow(QMainWindow):
         super(MainWindow, self).__init__()
         self.setGeometry(100, 100, 400, 284)
         self.setWindowTitle("Tortúra")
-        self.initUI()
+        self.init_ui()
 
 
-    def initUI(self):
+    def init_ui(self):
         welcome_window = WelcomeWindow()
         new_tortura_window = NewTorturaWindow()
 
         self.setCentralWidget(welcome_window)
 
-        welcome_window.new_tortura_signal.connect(partial(self.updateUI, new_tortura_window))
+        welcome_window.new_tortura_signal.connect(partial(self.update_ui, new_tortura_window))
 
-    def updateUI(self, widget):
+    def update_ui(self, widget):
         self.setCentralWidget(widget)
 
 def window():

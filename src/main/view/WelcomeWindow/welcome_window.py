@@ -1,4 +1,6 @@
-from src.main.view.qt_functions import *
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QGridLayout, QWidget
+from src.main.view.qt_functions import create_push_button
 
 
 class WelcomeWindow(QWidget):
@@ -6,15 +8,15 @@ class WelcomeWindow(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         print(self.parentWidget())
         grid = QGridLayout()
         self.setLayout(grid)
 
-        new_tortura_button = createPushButton("Új Tortúra", self.newTortura)
-        continue_tortura_button = createPushButton("Tortúra folytatása", self.dummy_function)
+        new_tortura_button = create_push_button("Új Tortúra", self.new_tortura)
+        continue_tortura_button = create_push_button("Tortúra folytatása", self.dummy_function)
 
 
         grid.addWidget(new_tortura_button, 0, 0)
@@ -23,5 +25,5 @@ class WelcomeWindow(QWidget):
     def dummy_function(self):
         pass
 
-    def newTortura(self):
+    def new_tortura(self):
         self.new_tortura_signal.emit()

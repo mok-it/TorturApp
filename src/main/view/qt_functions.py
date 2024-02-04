@@ -1,16 +1,17 @@
-from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import *
 from typing import List, Callable
-from PyQt5.QtCore import pyqtSignal
 
-def createLabel(text: str) -> QtWidgets.QLabel:
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QSizePolicy, QListWidget
+
+
+def create_label(text: str) -> QtWidgets.QLabel:
     newlabel = QtWidgets.QLabel()
     newlabel.setText(text)
     newlabel.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     return newlabel
 
 
-def createPushButton(text: str, function: Callable) -> QtWidgets.QPushButton:
+def create_push_button(text: str, function: Callable) -> QtWidgets.QPushButton:
     newpushbutton = QtWidgets.QPushButton()
     newpushbutton.setText(text)
     newpushbutton.clicked.connect(function)
@@ -18,12 +19,12 @@ def createPushButton(text: str, function: Callable) -> QtWidgets.QPushButton:
     return newpushbutton
 
 
-def createLineEdit() -> QtWidgets.QLineEdit:
+def create_line_edit() -> QtWidgets.QLineEdit:
     newlineedit = QtWidgets.QLineEdit()
     return newlineedit
 
 
-def createMessageBox(title: str, text: str, buttons) -> QtWidgets.QMessageBox:
+def create_message_box(title: str, text: str, buttons) -> QtWidgets.QMessageBox:
     newmessagebox = QtWidgets.QMessageBox()
     newmessagebox.setWindowTitle(title)
     newmessagebox.setText(text)
@@ -31,20 +32,20 @@ def createMessageBox(title: str, text: str, buttons) -> QtWidgets.QMessageBox:
     return newmessagebox
 
 
-def createListWidget(title: str, function: Callable) -> QtWidgets.QListWidget:
+def create_list_widget(title: str, function: Callable) -> QtWidgets.QListWidget:
     newlistwidget = QListWidget()
     newlistwidget.setWindowTitle(title)
     newlistwidget.itemDoubleClicked.connect(function)
     return newlistwidget
 
 
-def createSpinBox(minv: int, maxv: int) -> QtWidgets.QSpinBox:
+def create_spin_box(minv: int, maxv: int) -> QtWidgets.QSpinBox:
     newspinbox = QtWidgets.QSpinBox()
     newspinbox.setMinimum(minv)
     newspinbox.setMaximum(maxv)
     return newspinbox
 
-def createComboBox(lst: List) -> QtWidgets.QComboBox:
+def create_combo_box(lst: List) -> QtWidgets.QComboBox:
     combobox = QtWidgets.QComboBox()
     for x in lst:
         combobox.addItem(x)
