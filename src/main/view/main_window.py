@@ -1,9 +1,10 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
 
-from src.main.view.WelcomeWindow.welcome_window import WelcomeWindow
-from src.main.view.WelcomeWindow.new_tortura_window import NewTorturaWindow
+from src.main.view.manager.main_widget import ManagerMainWidget
+from src.main.view.setup.main_widget import SetupMainWidget
+from src.main.view.welcome_widget import WelcomeWidget
 import sys
-from functools import partial
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -12,22 +13,19 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Tortúra")
         self.init_ui()
 
-
     def init_ui(self):
-        welcome_window = WelcomeWindow()
-        new_tortura_window = NewTorturaWindow()
+        welcome_widget = WelcomeWidget()
+        manager_widget = ManagerMainWidget()
+        setup_widget = SetupMainWidget()
 
-        self.setCentralWidget(welcome_window)
-
-        welcome_window.new_tortura_signal.connect(partial(self.update_ui, new_tortura_window))
+        self.setCentralWidget(welcome_widget)
 
     def update_ui(self, widget):
         self.setCentralWidget(widget)
+
 
 def window():
     app = QApplication(sys.argv)
     win = MainWindow()
     win.show()
     sys.exit(app.exec_())
-
-
