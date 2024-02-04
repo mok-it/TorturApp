@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout
 
 
-class MainWidget(QWidget):
+class TeamSelector(QWidget):
     def __init__(self):
         super().__init__()
         self.init_ui()
@@ -9,5 +9,3 @@ class MainWidget(QWidget):
     def init_ui(self):
         grid = QGridLayout()
         self.setLayout(grid)
-
-        

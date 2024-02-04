@@ -1,5 +1,6 @@
 from src.main.view.main_window import window
 
+
 def main():
     window()
 
