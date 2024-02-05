@@ -21,7 +21,7 @@ class TestDbFunctions(unittest.TestCase):
 
         # Assert that the team was correctly written and read from the database
         self.assertEqual(db_team.team_number, team.team_number)
-        self.assertEqual(db_team.category, team.category)
+        self.assertEqual(db_team.category, team.category) # TODO this does not work yet
 
     def test_update_team(self):
         team_number = "123"
