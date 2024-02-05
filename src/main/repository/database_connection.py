@@ -1,15 +1,18 @@
+
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, Session
-from src.main.repository.database_settings import DatabaseSettings
+from sqlalchemy.orm import sessionmaker
+from src.main.model import correct_solution, settings, submission, team
 
-class DatabaseConnection:
-    def __init__(self, settings: DatabaseSettings):
-        self.engine = create_engine('sqlite:///torturapp.db')
-        self.session_local = sessionmaker(autocommit=False, autoflush=False, bind=self.engine)
+from src.main.model.base import Base
 
-    def get_db(self) -> Session:
-        db = self.session_local()
-        try:
-            yield db
-        finally:
-            db.close()
+db_file = "torturapp.db"
+
+# SQLite adatbázis létrehozása
+engine = create_engine(f"sqlite:///{db_file}")
+
+# Adatbázis táblák létrehozása
+Base.metadata.create_all(engine)
+
+# Session létrehozása az adatbázis műveletek végrehajtásához
+Session = sessionmaker(bind=engine)
+session = Session()
