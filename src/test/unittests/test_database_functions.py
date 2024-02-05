@@ -1,17 +1,12 @@
 import unittest
-
-from sqlalchemy.orm import Session
 from src.main.model.team import Team
-from src.main.repository.database_connection import DatabaseConnection
-from src.main.repository.database_settings import DatabaseSettings
-
+from src.main.repository.database_connection import session
+from src.main.repository.repository import Repository
 
 class TestDbFunctions(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(TestDbFunctions, self).__init__(*args, **kwargs)
-        db_settings = DatabaseSettings()
-        self.db_connection = DatabaseConnection(db_settings)
-        self.db: Session = next(self.db_connection.get_db())
+        self.repo = Repository(session)
 
     def test_create_and_read_team(self):
         team_number = "123"
@@ -19,12 +14,51 @@ class TestDbFunctions(unittest.TestCase):
         team = Team(team_number=team_number, category="ABCD")
 
         # Write it to the database
-        self.db.add(team)
-        self.db.commit()
+        self.repo.create(team)
 
         # Read it from the database
-        db_team = self.db.query(Team).filter_by(team_number=team_number).first()
+        db_team = self.repo.read(Team, {"team_number": team_number})
 
         # Assert that the team was correctly written and read from the database
         self.assertEqual(db_team.team_number, team.team_number)
         self.assertEqual(db_team.category, team.category)
+
+    def test_update_team(self):
+        team_number = "123"
+        # Create a team
+        team = Team(team_number=team_number, category="ABCD")
+
+        # Write it to the database
+        self.repo.create(team)
+
+        # Read it from the database
+        db_team = self.repo.read(Team, {"team_number": team_number})
+
+        # Update the team
+        new_category = "EFGH"
+        self.repo.update(db_team, category=new_category)
+
+        # Read it from the database
+        db_team = self.repo.read(Team, {"team_number": team_number})
+
+        # Assert that the team was correctly updated
+        self.assertEqual(db_team.category, new_category)
+
+    def test_delete_team(self):
+        team_number = "123"
+        # Create a team
+        team = Team(team_number=team_number, category="ABCD")
+
+        # Write it to the database
+        self.repo.create(team)
+
+        # Read it from the database
+        db_team = self.repo.read(Team, {"team_number": team_number})
+
+        # Delete the team
+        self.repo.delete(db_team)
+
+        # Read it from the database
+        db_team = self.repo.read(Team, {"team_number": team_number})
+
+        self.assertIsNone(db_team) # TODO this does not work yet
