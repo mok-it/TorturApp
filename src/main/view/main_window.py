@@ -14,14 +14,19 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        welcome_widget = WelcomeWidget()
-        manager_widget = ManagerMainWidget()
-        setup_widget = SetupMainWidget()
+        self.welcome_widget = WelcomeWidget()
+        self.manager_widget = ManagerMainWidget()
+        self.setup_widget = SetupMainWidget()
 
-        self.setCentralWidget(welcome_widget)
+        self.setCentralWidget(self.welcome_widget)
 
-    def update_ui(self, widget):
-        self.setCentralWidget(widget)
+        self.welcome_widget.signal.connect(self.update_ui)
+
+    def update_ui(self, value):
+        if value == 0:
+            self.setCentralWidget(self.setup_widget)
+        elif value == 1:
+            self.setCentralWidget(self.manager_widget)
 
 
 def window():
