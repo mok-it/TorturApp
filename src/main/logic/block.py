@@ -4,11 +4,13 @@ from typing import List
 
 class Block:
     exercises: List[Exercise] = []
+    min_good_solutions: List[int] = []
     size: int
 
-    def __init__(self, size: int, exercises: List[Exercise]):
+    def __init__(self, size: int, exercises: List[Exercise], min_good_sol: List[int]):
         self.size = size
         self.exercises = exercises
+        self.min_good_solutions = min_good_sol
 
     def get_exercises(self) -> List[Exercise]:
         return self.exercises

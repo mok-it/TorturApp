@@ -53,14 +53,9 @@ def create_combo_box(lst: List) -> QtWidgets.QComboBox:
     return combobox
 
 
-def create_radio_buttons(radio_button_names: List[str]) -> (QtWidgets.QButtonGroup, List[QtWidgets.QRadioButton]):
-    button_group = QtWidgets.QButtonGroup()
-    radio_buttons = []
-    for string in radio_button_names:
-        radio_button = QtWidgets.QRadioButton(string)
-        button_group.addButton(radio_button)
-        radio_buttons.append(radio_button)
-    return button_group, radio_buttons
+def create_radio_button(radio_button_name) -> QtWidgets.QRadioButton:
+    radio_button = QtWidgets.QRadioButton(radio_button_name)
+    return radio_button
 
 
 def create_check_box(label: str):

@@ -6,8 +6,8 @@ from src.main.view.qt_functions import create_push_button
 class WelcomeWidget(QWidget):
 
     signal = pyqtSignal(int)
-    # 0 : change to setup widget
-    # 1 : change to manager widget
+    # 1 : change to setup widget
+    # 2 : change to manager widget
 
     def __init__(self):
         super().__init__()
@@ -25,10 +25,10 @@ class WelcomeWidget(QWidget):
 
     def new_tortura(self):
         # TODO check whether there is a Tortura
-        self.signal.emit(0)
+        self.signal.emit(1)
 
     def continue_tortura(self):
         # TODO check whether there is a Tortura
-        self.signal.emit(1)
+        self.signal.emit(2)
 
 
