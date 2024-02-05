@@ -45,8 +45,23 @@ def create_spin_box(minv: int, maxv: int) -> QtWidgets.QSpinBox:
     newspinbox.setMaximum(maxv)
     return newspinbox
 
+
 def create_combo_box(lst: List) -> QtWidgets.QComboBox:
     combobox = QtWidgets.QComboBox()
     for x in lst:
         combobox.addItem(x)
     return combobox
+
+
+def create_radio_buttons(radio_button_names: List[str]) -> (QtWidgets.QButtonGroup, List[QtWidgets.QRadioButton]):
+    button_group = QtWidgets.QButtonGroup()
+    radio_buttons = []
+    for string in radio_button_names:
+        radio_button = QtWidgets.QRadioButton(string)
+        button_group.addButton(radio_button)
+        radio_buttons.append(radio_button)
+    return button_group, radio_buttons
+
+
+def create_check_box(label: str):
+    return QtWidgets.QCheckBox(label)
