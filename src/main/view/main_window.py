@@ -1,3 +1,5 @@
+from functools import partial
+
 from PyQt5.QtWidgets import QMainWindow, QApplication, QStackedWidget
 
 from src.main.api.api import API
@@ -27,16 +29,17 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(self.widgets)
 
-        self.welcome_widget.signal.connect(self.update_ui)
-        self.setup_widget.signal.connect(self.update_ui)
+        self.welcome_widget.signal.connect(partial(self.update_ui, api))
+        self.setup_widget.signal.connect(partial(self.update_ui, api))
 
-    def update_ui(self, value):
+    def update_ui(self, api: API, value):
         if value == 0:
             self.widgets.setCurrentWidget(self.welcome_widget)
         elif value == 1:
             self.widgets.setCurrentWidget(self.setup_widget)
         elif value == 2:
             self.widgets.setCurrentWidget(self.manager_widget)
+            self.manager_widget.team_selector.refresh_ui(api)
 
 
 def window(api: API):

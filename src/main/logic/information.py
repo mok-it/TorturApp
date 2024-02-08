@@ -8,14 +8,14 @@ class ExerciseType(Enum):
 
 class Information:
     def __init__(self):
-        self.camp: str
-        self.age: str
+        self.camp: str = ""
+        self.age: str = ""
 
         self.exercise_type: ExerciseType = ExerciseType.BLOCK
         self.manual_letting: bool = False
 
-        self.groups_file_path: str
-        self.solutions_file_path: str
+        self.groups_file_path: str = ""
+        self.solutions_file_path: str = ""
 
     def set_camp(self, camp: str):
         self.camp = camp

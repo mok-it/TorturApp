@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 from src.main.logic.group import Group
@@ -7,6 +8,9 @@ from src.main.logic.logic import Logic
 class API:
     def __init__(self, logic: Logic):
         self.logic = logic
+
+    def get_number_of_groups(self):
+        return self.logic.get_num_of_groups()
 
     def set_camp(self, camp: str) -> None:
         self.logic.settings.set_camp(camp)
@@ -30,11 +34,17 @@ class API:
     def set_manual_letting(self, manual_letting: bool) -> None:
         self.logic.settings.set_manual_letting(manual_letting)
 
+    def get_groups_file(self) -> str:
+        return self.logic.settings.groups_file_path
+
     def set_groups_file(self, groups_file_path: str) -> None:
         self.logic.settings.set_groups_file_path(groups_file_path)
 
     def set_solutions_file(self, solutions_file_path: str) -> None:
         self.logic.settings.set_solutions_file_path(solutions_file_path)
+
+    def create_n_groups(self, n: int) -> None:
+        self.logic.create_n_groups(n)
 
     def check_solution_file(self, file) -> int:
         try:
@@ -68,3 +78,10 @@ class API:
                 self.logic.set_nth_exercise_solution(counter, line.rstrip())
                 counter += 1
         f.close()
+
+    def calculate_view(self, number_of_groups: int) -> (int, int):
+        sqrt = math.ceil(math.sqrt(number_of_groups))
+        if sqrt > 4:
+            return 4, math.ceil(number_of_groups / 4)
+        else:
+            return sqrt, sqrt

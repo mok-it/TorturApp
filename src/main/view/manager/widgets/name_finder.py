@@ -1,11 +1,13 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout
 
+from src.main.api.api import API
+
 
 class NameFinder(QWidget):
-    def __init__(self):
+    def __init__(self, api: API):
         super().__init__()
-        self.init_ui()
+        self.init_ui(api)
 
-    def init_ui(self):
+    def init_ui(self, api: API):
         grid = QGridLayout()
         self.setLayout(grid)

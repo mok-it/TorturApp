@@ -76,6 +76,10 @@ class FileUploader(QWidget):
         self.signal.emit(0)
 
     def go_forward(self, api):
-        api.set_groups_file(self.groups_file_path)
-        api.set_solutions_file(self.solutions_file_path)
+        if self.groups_file_path:
+            api.set_groups_file(self.groups_file_path)
+        else:
+            api.create_n_groups(self.group_number_spin_box.value())
+        if self.solutions_file_path:
+            api.set_solutions_file(self.solutions_file_path)
         self.signal.emit(1)

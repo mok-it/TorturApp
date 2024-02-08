@@ -27,6 +27,11 @@ class Logic:
         assert len(self.blocks) > n >= 0
         return self.blocks[n]
 
+    def create_n_groups(self, n: int):
+        self.groups.clear()
+        for i in range(0, n):
+            self.add_group(Group([], self.blocks))
+
     def set_nth_exercise_solution(self, n: int, value: str) -> None:
         block_counter: int = 0
         while n > len(self.blocks[block_counter].exercises):
