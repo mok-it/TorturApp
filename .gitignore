@@ -3,3 +3,5 @@
 src/main/view/setup/__pycache__
 src/main/view/__pycache__
 src/test/unittests/__pycache__/
+
+src/main/view/manager/__pycache__/
