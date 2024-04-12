@@ -12,6 +12,6 @@ class Settings(Base):
     __tablename__ = "settings"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    number_of_excercises: Mapped[int] = mapped_column(default=15)
-    number_of_blocks: Mapped[int] = mapped_column(default=5)
+    number_of_excercises: Mapped[int] = mapped_column()
+    number_of_blocks: Mapped[int] = mapped_column()
     criteria_of_moving_to_next_block: Mapped[BlockCriteria] = mapped_column(SQLEnum(BlockCriteria), default=BlockCriteria.FIFTY_PERCENT_PLUS_ONE)

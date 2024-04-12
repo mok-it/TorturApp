@@ -1,14 +1,15 @@
-from src.main.model import settings
-from src.main.repository.database_connection import DatabaseConnection
-from src.main.repository.database_settings import DatabaseSettings
+import sqlalchemy as sa
+from sqlalchemy.orm import sessionmaker
+
+from src.main.repository.database_connection import setup_database
 from src.main.view.main_window import window
 
+
 def main():
+    # Call the table initializer
+    setup_database()
     window()
-
-    # start the db connection
-    DatabaseConnection(settings=DatabaseSettings())
-
+    
 
 if __name__ == "__main__":
     main()

@@ -12,6 +12,6 @@ class Team(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     team_number: Mapped[str]
     category: Mapped[str] # TODO user should be able to define the categories themselves, i.e. ABCD-KLMN-XYZ or something like that
-    # names: Mapped[Optional[PickleType]] # TODO does not work yet
-    submissions = relationship("Submission", back_populates="team")
+    #names: Mapped[Optional[PickleType]] # TODO does not work yet
+    #submissions = relationship("Submission", back_populates="team")
     time_of_finish: Mapped[Optional[str]]
