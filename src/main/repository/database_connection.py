@@ -42,15 +42,11 @@ class DatabaseConnection:
         self.session.close()
 
     def create_submission_for_team_with_id(self, team_id: int):
-
         team = select(Team).where(Team.id == id)
-        print("tried to query team")
         if team is not None:
-            print("got team")
             submission = Submission(block_number=1, exercise_number=1, answer="Test Answer", team_id=team_id)
             self.session.add(submission)
             self.session.commit()
-    
             self.session.close()
         
     def get_teams_submissions(self, team_id: int):
