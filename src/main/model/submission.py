@@ -11,4 +11,4 @@ class Submission(Base):
     answer: Mapped[str] # though uncommon, some exercises might require a string as an answer
     team_id: Mapped[int] = mapped_column(ForeignKey('team.id'))
 
-    #team = relationship("Team", back_populates="submissions")
+    team = relationship("Team", back_populates="submissions")
