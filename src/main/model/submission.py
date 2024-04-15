@@ -12,3 +12,6 @@ class Submission(Base):
     team_id: Mapped[int] = mapped_column(ForeignKey('team.id'))
 
     team = relationship("Team", back_populates="submissions")
+
+    def __str__(self):
+        return f"Submission(id={self.id}, block_number={self.block_number}, exercise_number={self.exercise_number}, answer={self.answer}, team_id={self.team_id})"

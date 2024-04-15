@@ -8,7 +8,7 @@ from src.main.model.team import Team
 from src.main.model.correct_solution import CorrectSolution
 from src.main.model.settings import Settings
 from src.main.model.submission import Submission
-class DatabaseConnection:
+class Repository:
     def __init__(self):
         self.engine = create_engine('sqlite:///torturapp.db', echo=True)
         self.Session = sessionmaker(bind=self.engine)
@@ -41,17 +41,18 @@ class DatabaseConnection:
         self.session.commit()
         self.session.close()
 
-    def create_submission_for_team_with_id(self, team_id: int):
-        team = select(Team).where(Team.id == id)
-        if team is not None:
-            submission = Submission(block_number=1, exercise_number=1, answer="Test Answer", team_id=team_id)
+    def create_submission(self, submission: Submission):
+        team = select(Team).where(Team.id == submission.team_id)
+        if team is None:
+            raise ValueError("Team not found")
+        else:
             self.session.add(submission)
             self.session.commit()
             self.session.close()
+            
         
     def get_teams_submissions(self, team_id: int):
-        submissions = select(Submission).where(Submission.team_id == team_id)
-        result = self.session.execute(submissions)
-        for user_obj in result.scalars():
-            print(f"{user_obj.answer} {user_obj.block_number}")
-        return result.scalars()
+        return self.session.execute(select(Submission).where(Submission.team_id == team_id)).scalars()
+    
+    
+    
