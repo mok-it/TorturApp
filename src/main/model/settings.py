@@ -15,3 +15,6 @@ class Settings(Base):
     number_of_excercises: Mapped[int] = mapped_column()
     number_of_blocks: Mapped[int] = mapped_column()
     criteria_of_moving_to_next_block: Mapped[BlockCriteria] = mapped_column(SQLEnum(BlockCriteria), default=BlockCriteria.FIFTY_PERCENT_PLUS_ONE)
+    
+    def __str__(self):
+        return f"Settings(id={self.id}, number_of_excercises={self.number_of_excercises}, number_of_blocks={self.number_of_blocks}, criteria_of_moving_to_next_block={self.criteria_of_moving_to_next_block})"

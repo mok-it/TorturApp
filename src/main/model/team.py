@@ -15,3 +15,6 @@ class Team(Base):
     names: Mapped[str] # list of names, separated by commas, e.g. "Bela, Aladar"
     submissions = relationship("Submission", back_populates="team")
     time_of_finish: Mapped[Optional[str]]
+    
+    def __str__(self):
+        return f"Team(id={self.id}, team_number={self.team_number}, category={self.category}, names={self.names}, time_of_finish={self.time_of_finish})"

@@ -9,3 +9,6 @@ class CorrectSolution(Base):
     exercise_number: Mapped[int] = mapped_column()
     category: Mapped[str] = mapped_column()
     solution: Mapped[str] = mapped_column() # though uncommon, some exercises might require a string as an answer
+    
+    def __str__(self):
+        return f"CorrectSolution(id={self.id}, block_number={self.block_number}, exercise_number={self.exercise_number}, category={self.category}, solution={self.solution})"
