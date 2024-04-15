@@ -1,25 +1,19 @@
-from sqlalchemy import create_engine, MetaData, select
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import select
 
-from src.main.model import settings
-from src.main.model.base import Base
-
-from src.main.model.team import Team
 from src.main.model.correct_solution import CorrectSolution
 from src.main.model.settings import Settings
 from src.main.model.submission import Submission
-class Repository:
-    def __init__(self):
-        self.engine = create_engine('sqlite:///torturapp.db', echo=True)
-        self.Session = sessionmaker(bind=self.engine)
-        self.session = self.Session()
-    def setup_database(self):
+from src.main.model.team import Team
+from src.main.repository import dblink
+from src.main.repository.dblink import Dblink
+
+    # def setup_database(self):
         # engine = create_engine('sqlite:///torturapp.db', echo=True)
-    
-        Base.metadata.create_all(self.engine)
+
+        # Base.metadata.create_all(self.engine)
         # Session = sessionmaker(bind=engine)
         # session = Session()
-        
+
         # Uncomment this to add some data to the database
         # teams = [
         #     Team(team_number="1", category="Bocs", names="Bela,Aladar"),
@@ -38,45 +32,5 @@ class Repository:
         # session.add_all(teams)
         # session.add(setting1)
         # session.add_all(correct_solutions)
-        self.session.commit()
-        self.session.close()
-
-    def create_submission(self, submission: Submission):
-        team = select(Team).where(Team.id == submission.team_id)
-        if team is None:
-            raise ValueError("Team not found")
-        else:
-            self.session.add(submission)
-            self.session.commit()
-            # self.session.close()
-            
-        
-    def get_teams_submissions(self, team_id: int):
-        return list(self.session.execute(select(Submission).where(Submission.team_id == team_id)).scalars())
-
-    def create_team(self, team: Team):
-        self.session.add(team)
-        self.session.commit()
+        # self.session.commit()
         # self.session.close()
-
-    def get_teams(self):
-        return list(self.session.execute(select(Team)).scalars())
-
-    def create_correct_solution(self, correct_solution: CorrectSolution):
-        self.session.add(correct_solution)
-        self.session.commit()
-        # self.session.close()
-
-    def get_correct_solutions(self):
-        return list(self.session.execute(select(CorrectSolution)).scalars())
-
-    def create_settings(self, new_settings: Settings):
-        self.session.add(new_settings)
-        self.session.commit()
-        # self.session.close()
-
-    def get_settings(self):
-        return list(self.session.execute(select(Settings)).scalars())
-    
-    
-    
