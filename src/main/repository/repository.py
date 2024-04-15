@@ -48,11 +48,35 @@ class Repository:
         else:
             self.session.add(submission)
             self.session.commit()
-            self.session.close()
+            # self.session.close()
             
         
     def get_teams_submissions(self, team_id: int):
-        return self.session.execute(select(Submission).where(Submission.team_id == team_id)).scalars()
+        return list(self.session.execute(select(Submission).where(Submission.team_id == team_id)).scalars())
+
+    def create_team(self, team: Team):
+        self.session.add(team)
+        self.session.commit()
+        # self.session.close()
+
+    def get_teams(self):
+        return list(self.session.execute(select(Team)).scalars())
+
+    def create_correct_solution(self, correct_solution: CorrectSolution):
+        self.session.add(correct_solution)
+        self.session.commit()
+        # self.session.close()
+
+    def get_correct_solutions(self):
+        return list(self.session.execute(select(CorrectSolution)).scalars())
+
+    def create_settings(self, new_settings: Settings):
+        self.session.add(new_settings)
+        self.session.commit()
+        # self.session.close()
+
+    def get_settings(self):
+        return list(self.session.execute(select(Settings)).scalars())
     
     
     
